@@ -143,11 +143,32 @@ document.addEventListener('DOMContentLoaded', () => {
     input.removeEventListener('focus', unlock);
   }, { once: true });
 
+  const rainImages = ['Images/Pepi1.jpg', 'Images/Pepi2.jpg', 'Images/Ra1.jpg', 'Images/Ra2.jpg'];
+  const rainContainer = document.getElementById('rain-container');
+  const RAIN_COUNT = 8;
+
+  function startRain() {
+    if (!rainContainer) return;
+    rainContainer.innerHTML = '';
+    for (let i = 0; i < RAIN_COUNT; i++) {
+      const img = document.createElement('img');
+      img.className = 'rain-img';
+      img.src = rainImages[i % rainImages.length];
+      img.alt = '';
+      img.style.left = Math.random() * 90 + '%';
+      img.style.width = (40 + Math.random() * 35) + 'px';
+      img.style.animationDuration = (10 + Math.random() * 8) + 's';
+      img.style.animationDelay = -(Math.random() * 25) + 's';
+      rainContainer.appendChild(img);
+    }
+  }
+
   function showResult(goToCute) {
     document.body.classList.add('has-result');
     if (goToCute) {
       cuteResult.classList.add('active');
       cuteResult.setAttribute('aria-hidden', 'false');
+      startRain();
       if (meanAudio) {
         meanAudio.pause();
         meanAudio.currentTime = 0;

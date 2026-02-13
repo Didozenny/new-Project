@@ -181,6 +181,30 @@ body {
 
 #cute-result {
   background-image: url('../Images/CuteImage.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.rain-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.rain-img {
+  position: absolute;
+  top: -20%;
+  width: 60px;
+  height: auto;
+  object-fit: contain;
+  animation: rain-fall linear infinite;
+  opacity: 0.9;
+}
+
+@keyframes rain-fall {
+  0% { transform: translateY(-20%) translateX(0); }
+  100% { transform: translateY(120vh) translateX(0); }
 }
 
 #mean-result {
