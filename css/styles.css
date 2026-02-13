@@ -185,6 +185,26 @@ body {
   background-position: center;
 }
 
+.cute-title {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: 'MedievalSharp', cursive;
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 600;
+  color: #ff69b4;
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000,
+    0 0 4px #000;
+  z-index: 10;
+  letter-spacing: 0.1em;
+}
+
 .rain-container {
   position: absolute;
   inset: 0;
