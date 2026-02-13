@@ -144,10 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { once: true });
 
   const rainImages = [
-    'Images/Pepi1/Pepi1.png',
-    'Images/Pepi2/Pepi2.png',
-    'Images/Ra1/Ra1.png',
-    'Images/Ra2/Ra2.png'
+    'Images/Pepi1.png',
+    'Images/Pepi2.png',
+    'Images/Ra1.png',
+    'Images/Ra2.png'
   ];
   const rainContainer = document.getElementById('rain-container');
   const RAIN_COUNT = 8;
