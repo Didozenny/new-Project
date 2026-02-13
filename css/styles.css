@@ -205,6 +205,46 @@ body {
   letter-spacing: 0.1em;
 }
 
+.scroll-text-wrapper {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90%, 600px);
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  touch-action: none;
+  overscroll-behavior: none;
+  z-index: 5;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+.scroll-text {
+  position: absolute;
+  top: 100%;
+  pointer-events: none;
+  user-select: none;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0 1rem;
+  font-family: 'MedievalSharp', cursive;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  white-space: pre-wrap;
+  animation: scroll-up 60s linear infinite;
+}
+
+@keyframes scroll-up {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
 .rain-container {
   position: absolute;
   inset: 0;
