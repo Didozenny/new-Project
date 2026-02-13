@@ -207,6 +207,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const rainContainer = document.getElementById('rain-container');
   const RAIN_COUNT = 8;
 
+  const TENOR_GIF_IDS = [
+    '10904659024950094214',
+    '5680273065001436260',
+    '610868115612253318',
+    '18184950722715874716',
+    '3567395882362577907',
+    '25380925'
+  ];
+  const skeletonGifContainer = document.getElementById('skeleton-gif-container');
+  let skeletonGifInterval = null;
+
+  function startSkeletonGifs() {
+    if (!skeletonGifContainer) return;
+    skeletonGifContainer.innerHTML = '';
+    if (skeletonGifInterval) clearInterval(skeletonGifInterval);
+    skeletonGifInterval = setInterval(() => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'skeleton-gif-item';
+      const maxX = Math.max(0, 100 - 15);
+      const maxY = Math.max(0, 100 - 12);
+      wrapper.style.left = Math.random() * maxX + '%';
+      wrapper.style.top = Math.random() * maxY + '%';
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://tenor.com/embed/${TENOR_GIF_IDS[Math.floor(Math.random() * TENOR_GIF_IDS.length)]}?background=transparent`;
+      iframe.setAttribute('allowtransparency', 'true');
+      wrapper.appendChild(iframe);
+      skeletonGifContainer.appendChild(wrapper);
+    }, 200);
+  }
+
   function startRain() {
     if (!rainContainer) return;
     rainContainer.innerHTML = '';
@@ -215,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img.className = 'rain-img';
       img.src = rainImages[i % rainImages.length];
       img.alt = '';
-      img.style.left = Math.random() * 90 + '%';
+      img.style.left = Math.random() * 100 + 'vw';
       img.style.width = (170 + Math.random() * 153) + 'px';
       img.style.animationDuration = (10 + Math.random() * 8) + 's';
       img.style.animationDelay = -(Math.random() * 25) + 's';
@@ -235,9 +265,14 @@ document.addEventListener('DOMContentLoaded', () => {
         meanAudio.pause();
         meanAudio.currentTime = 0;
       }
+      if (skeletonGifInterval) {
+        clearInterval(skeletonGifInterval);
+        skeletonGifInterval = null;
+      }
     } else {
       meanResult.classList.add('active');
       meanResult.setAttribute('aria-hidden', 'false');
+      startSkeletonGifs();
       playMeanAudio();
       if (cuteAudio) {
         cuteAudio.pause();
