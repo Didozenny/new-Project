@@ -130,7 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (meanAudio) {
     meanAudio.addEventListener('error', () => {
-      if (playBtn) playBtn.textContent = '⚠️ Put Blasphemy - demoniac.mp3 in Audio/ folder';
+      if (playBtn) {
+        playBtn.textContent = '🔊 Audio failed to load - add Blasphemy - demoniac.mp3 to Audio/ and push to GitHub';
+      }
     });
   }
 
@@ -185,6 +187,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!name) return;
 
     const goToCute = goesToCutePage(name);
+
+    if (!goToCute) {
+      playMeanAudio();
+    }
     showResult(goToCute);
   });
 });
