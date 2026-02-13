@@ -126,23 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const meanAudio = document.getElementById('mean-audio');
-  const playBtn = document.getElementById('play-sound-btn');
-
-  if (meanAudio) {
-    meanAudio.addEventListener('error', () => {
-      if (playBtn) {
-        playBtn.textContent = '🔊 Audio failed to load - add Blasphemy - demoniac.mp3 to Audio/ and push to GitHub';
-      }
-    });
-  }
 
   function playMeanAudio() {
     if (!meanAudio) return;
     meanAudio.loop = true;
     meanAudio.volume = 1;
-    meanAudio.play().catch(() => {
-      if (playBtn) playBtn.textContent = '🔊 Click to play';
-    });
+    meanAudio.play().catch(() => {});
   }
 
   // Unlock audio when user first interacts (focus input) - helps bypass browser autoplay blocks
@@ -153,14 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     input.removeEventListener('focus', unlock);
   }, { once: true });
-
-  if (playBtn && meanAudio) {
-    playBtn.addEventListener('click', () => {
-      playMeanAudio();
-      playBtn.textContent = '🔊 Playing';
-      playBtn.disabled = true;
-    });
-  }
 
   function showResult(goToCute) {
     document.body.classList.add('has-result');
