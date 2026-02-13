@@ -126,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const meanAudio = document.getElementById('mean-audio');
+  const cuteAudio = document.getElementById('cute-audio');
 
   function playMeanAudio() {
     if (!meanAudio) return;
@@ -134,11 +135,22 @@ document.addEventListener('DOMContentLoaded', () => {
     meanAudio.play().catch(() => {});
   }
 
+  function playCuteAudio() {
+    if (!cuteAudio) return;
+    cuteAudio.loop = true;
+    cuteAudio.volume = 1;
+    cuteAudio.play().catch(() => {});
+  }
+
   // Unlock audio when user first interacts (focus input) - helps bypass browser autoplay blocks
   input.addEventListener('focus', function unlock() {
     if (meanAudio) {
       meanAudio.play().then(() => meanAudio.pause()).catch(() => {});
       meanAudio.currentTime = 0;
+    }
+    if (cuteAudio) {
+      cuteAudio.play().then(() => cuteAudio.pause()).catch(() => {});
+      cuteAudio.currentTime = 0;
     }
     input.removeEventListener('focus', unlock);
   }, { once: true });
@@ -161,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img.src = rainImages[i % rainImages.length];
       img.alt = '';
       img.style.left = Math.random() * 90 + '%';
-      img.style.width = (100 + Math.random() * 90) + 'px';
+      img.style.width = (170 + Math.random() * 153) + 'px';
       img.style.animationDuration = (10 + Math.random() * 8) + 's';
       img.style.animationDelay = -(Math.random() * 25) + 's';
       rainContainer.appendChild(img);
@@ -174,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
       cuteResult.classList.add('active');
       cuteResult.setAttribute('aria-hidden', 'false');
       startRain();
+      playCuteAudio();
       if (meanAudio) {
         meanAudio.pause();
         meanAudio.currentTime = 0;
@@ -182,6 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
       meanResult.classList.add('active');
       meanResult.setAttribute('aria-hidden', 'false');
       playMeanAudio();
+      if (cuteAudio) {
+        cuteAudio.pause();
+        cuteAudio.currentTime = 0;
+      }
     }
   }
 
@@ -197,6 +214,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!goToCute) {
       playMeanAudio();
+    } else {
+      playCuteAudio();
     }
     showResult(goToCute);
   });
