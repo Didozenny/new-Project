@@ -155,6 +155,17 @@ document.addEventListener('DOMContentLoaded', () => {
     input.removeEventListener('focus', unlock);
   }, { once: true });
 
+  const scrollTextEl = document.getElementById('scroll-text');
+
+  function setupInfiniteScroll() {
+    if (!scrollTextEl) return;
+    const content = scrollTextEl.innerHTML.trim();
+    if (!content) return;
+    scrollTextEl.innerHTML = content + '\n\n' + content + '\n\n' + content + '\n\n' + content;
+  }
+
+  setupInfiniteScroll();
+
   const rainImages = [
     'Images/Pepi1.png',
     'Images/Pepi2.png',
@@ -188,6 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (goToCute) {
       cuteResult.classList.add('active');
       cuteResult.setAttribute('aria-hidden', 'false');
+      setupInfiniteScroll();
       startRain();
       playCuteAudio();
       if (meanAudio) {

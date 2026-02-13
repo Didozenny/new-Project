@@ -218,23 +218,25 @@ body {
   touch-action: none;
   overscroll-behavior: none;
   z-index: 5;
-  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%);
 }
 
 .scroll-text {
   position: absolute;
   top: 100%;
+  left: 50%;
   pointer-events: none;
   user-select: none;
-  left: 0;
-  right: 0;
+  width: 100%;
+  max-width: 100%;
   margin: 0;
   padding: 0 1rem;
   font-family: 'MedievalSharp', cursive;
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   line-height: 1.5;
   color: #fff;
+  text-align: center;
   text-shadow:
     -2px -2px 0 #000,
     2px -2px 0 #000,
@@ -246,8 +248,8 @@ body {
 }
 
 @keyframes scroll-up {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-100%); }
+  0% { transform: translate(-50%, 0); }
+  100% { transform: translate(-50%, -25%); }
 }
 
 .rain-container {
