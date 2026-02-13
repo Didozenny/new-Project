@@ -200,11 +200,15 @@ body {
   object-fit: contain;
   animation: rain-fall linear infinite;
   opacity: 0.9;
+  transform-origin: center;
 }
 
 @keyframes rain-fall {
-  0% { transform: translateY(-20%) translateX(0); }
-  100% { transform: translateY(120vh) translateX(0); }
+  0%   { transform: translateY(-20%) translateX(0) rotate(-25deg); }
+  25%  { transform: translateY(35vh) translateX(20px) rotate(28deg); }
+  50%  { transform: translateY(70vh) translateX(-18px) rotate(-30deg); }
+  75%  { transform: translateY(105vh) translateX(15px) rotate(25deg); }
+  100% { transform: translateY(140vh) translateX(0) rotate(-25deg); }
 }
 
 #mean-result {

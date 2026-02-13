@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img.src = rainImages[i % rainImages.length];
       img.alt = '';
       img.style.left = Math.random() * 90 + '%';
-      img.style.width = (40 + Math.random() * 35) + 'px';
+      img.style.width = (100 + Math.random() * 90) + 'px';
       img.style.animationDuration = (10 + Math.random() * 8) + 's';
       img.style.animationDelay = -(Math.random() * 25) + 's';
       rainContainer.appendChild(img);
