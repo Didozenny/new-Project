@@ -156,12 +156,41 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { once: true });
 
   const scrollTextEl = document.getElementById('scroll-text');
+  const scrollInner = document.getElementById('scroll-text-inner');
 
   function setupInfiniteScroll() {
     if (!scrollTextEl) return;
     const content = scrollTextEl.innerHTML.trim();
     if (!content) return;
     scrollTextEl.innerHTML = content + '\n\n' + content + '\n\n' + content + '\n\n' + content;
+  }
+
+  function startSeamlessScroll() {
+    if (!scrollInner || !scrollTextEl) return;
+    setupInfiniteScroll();
+    const totalHeight = scrollTextEl.scrollHeight;
+    const blockHeight = totalHeight / 4;
+    let offset = 0;
+    const duration = 180;
+    const speed = blockHeight / duration;
+    let lastTime = performance.now();
+
+    function animate(now) {
+      const dt = Math.min((now - lastTime) / 1000, 0.1);
+      lastTime = now;
+      offset += speed * dt;
+      if (offset >= blockHeight) {
+        offset -= blockHeight;
+        const parts = scrollTextEl.innerHTML.split(/\n\n+/).filter(p => p.trim());
+        if (parts.length >= 2) {
+          const first = parts.shift();
+          scrollTextEl.innerHTML = parts.join('\n\n') + '\n\n' + first;
+        }
+      }
+      scrollInner.style.transform = `translate(-50%, ${-offset}px)`;
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
   }
 
   setupInfiniteScroll();
@@ -199,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (goToCute) {
       cuteResult.classList.add('active');
       cuteResult.setAttribute('aria-hidden', 'false');
-      setupInfiniteScroll();
+      startSeamlessScroll();
       startRain();
       playCuteAudio();
       if (meanAudio) {
