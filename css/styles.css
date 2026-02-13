@@ -1,0 +1,237 @@
+/* ============================================
+   Gothic Skeleton Layout
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: #0a0908;
+  font-family: 'MedievalSharp', cursive;
+  color: #e8e4dc;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* ============================================
+   Skeleton Image - Centered
+   ============================================ */
+
+.skeleton-wrapper {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+}
+
+.skeleton-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+  filter: contrast(1.05) brightness(0.85) saturate(0.9);
+  box-shadow: 
+    0 0 0 1px rgba(139, 119, 101, 0.3),
+    0 25px 80px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* ============================================
+   Text Input - Centered Overlay (Gothic Style)
+   ============================================ */
+
+.input-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.gothic-prompt {
+  font-family: 'Uncial Antiqua', 'MedievalSharp', cursive;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  color: #c4b8a8;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.8), 0 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.input-frame {
+  position: relative;
+  width: 100%;
+  padding: 0.5rem;
+  background: linear-gradient(145deg, #1a1714 0%, #0f0d0b 100%);
+  border: 2px solid #8b7765;
+  box-shadow: 
+    0 0 0 1px #2a2420,
+    inset 0 0 0 1px rgba(139, 119, 101, 0.4),
+    0 0 30px rgba(0, 0, 0, 0.5),
+    inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Ornate corner flourishes */
+.input-corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: #8b7765;
+  border-style: solid;
+  border-width: 0;
+}
+
+.corner-tl {
+  top: -2px;
+  left: -2px;
+  border-top-width: 3px;
+  border-left-width: 3px;
+  border-top-left-radius: 2px;
+}
+
+.corner-tr {
+  top: -2px;
+  right: -2px;
+  border-top-width: 3px;
+  border-right-width: 3px;
+  border-top-right-radius: 2px;
+}
+
+.corner-bl {
+  bottom: -2px;
+  left: -2px;
+  border-bottom-width: 3px;
+  border-left-width: 3px;
+  border-bottom-left-radius: 2px;
+}
+
+.corner-br {
+  bottom: -2px;
+  right: -2px;
+  border-bottom-width: 3px;
+  border-right-width: 3px;
+  border-bottom-right-radius: 2px;
+}
+
+/* Gothic input field */
+.gothic-input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  font-family: 'Uncial Antiqua', 'MedievalSharp', cursive;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  color: #e8e4dc;
+  background: linear-gradient(180deg, #161310 0%, #0d0b09 100%);
+  border: 1px solid #3d352c;
+  outline: none;
+  display: block;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gothic-input::placeholder {
+  color: #6b5d52;
+  font-style: italic;
+}
+
+.gothic-input:focus {
+  border-color: #8b7765;
+  box-shadow: 
+    0 0 0 1px rgba(139, 119, 101, 0.5),
+    inset 0 0 20px rgba(139, 119, 101, 0.05);
+}
+
+/* ============================================
+   Result Sections (Full-page backgrounds)
+   ============================================ */
+
+.result-section {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: none;
+}
+
+.result-section.active {
+  display: block;
+}
+
+#cute-result {
+  background-image: url('../Images/CuteImage.jpg');
+}
+
+#mean-result {
+  background-image: url('../Images/meanSkeleton.jpg');
+  background-size: contain;
+  background-position: center;
+  background-color: #0a0908;
+}
+
+.play-sound-btn {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.75rem 1.5rem;
+  font-family: 'MedievalSharp', cursive;
+  font-size: 1rem;
+  color: #e8e4dc;
+  background: rgba(20, 18, 16, 0.9);
+  border: 2px solid #8b7765;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.play-sound-btn:hover {
+  background: rgba(50, 45, 40, 0.95);
+}
+
+
+body.has-result #landing {
+  display: none;
+}
+
+.file-protocol-warning {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 1.5rem;
+  background: #3d2a1a;
+  color: #e8e4dc;
+  font-family: 'MedievalSharp', cursive;
+  font-size: 0.9rem;
+  text-align: center;
+  z-index: 2000;
+  border-bottom: 2px solid #8b7765;
+}
+
+.file-protocol-warning code {
+  background: rgba(0,0,0,0.3);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}

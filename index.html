@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skeleton — Gothic Input</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Uncial+Antiqua&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="file-protocol-warning" id="file-warning">
+    <strong>Audio won't work with file://</strong> — Use a local server instead:
+    <br>In Cursor: Right-click <code>index.html</code> → <b>Open with Live Server</b>
+    <br>Or in terminal: <code>npx serve -l 3000</code> then open http://localhost:3000
+  </div>
+  <main class="page" id="landing">
+    <div class="skeleton-wrapper">
+      <img 
+        src="Images/veryCoolSkeleton.jpg" 
+        alt="Skeleton" 
+        class="skeleton-image"
+      >
+      <div class="input-overlay">
+        <div class="input-frame">
+          <div class="input-corner corner-tl"></div>
+          <div class="input-corner corner-tr"></div>
+          <div class="input-corner corner-bl"></div>
+          <div class="input-corner corner-br"></div>
+          <input 
+            type="text" 
+            id="name-input"
+            class="gothic-input" 
+            placeholder="Speak thy name"
+            autocomplete="off"
+          >
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section class="result-section" id="cute-result" aria-hidden="true">
+    <!-- CuteImage.jpg background - shown for Oliver -->
+  </section>
+
+  <section class="result-section" id="mean-result" aria-hidden="true">
+    <button type="button" class="play-sound-btn" id="play-sound-btn">🔊 Play</button>
+  </section>
+
+  <audio id="mean-audio" loop preload="auto">
+    <source src="Audio/Blasphemy - demoniac.mp3" type="audio/mpeg">
+    <source src="Audio/Blasphemy - demoniac.wav" type="audio/wav">
+  </audio>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
