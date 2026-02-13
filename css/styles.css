@@ -218,8 +218,26 @@ body {
   touch-action: none;
   overscroll-behavior: none;
   z-index: 5;
-  mask-image: linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%);
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0,0,0,0.2) 2%,
+    rgba(0,0,0,0.5) 5%,
+    black 10%,
+    black 90%,
+    rgba(0,0,0,0.5) 95%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0,0,0,0.2) 2%,
+    rgba(0,0,0,0.5) 5%,
+    black 10%,
+    black 90%,
+    rgba(0,0,0,0.5) 95%,
+    transparent 100%
+  );
 }
 
 .scroll-text {
